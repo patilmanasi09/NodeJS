@@ -1,27 +1,30 @@
-function addition (x,y){
-    return x+y;
+
+
+function calculator(num1, num2, operator) {
+
+  switch (operator) {
+
+    case "+":
+      return num1 + num2;
+
+    case "-":
+      return num1 - num2;
+
+    case "*":
+      return num1 * num2;
+
+    case "/":
+      if (num2 === 0) {
+        return "Cannot divide by zero";
+      }
+      return num1 / num2;
+
+    case "square":
+      return num1 * num1;
+
+    default:
+      return "Invalid operation";
+  }
 }
 
-//subtraction, division, multiplication, square,
-function subtraction (x,y){
-    return x-y;
-}   
-function division (x,y){
-    if (y == 0) {
-        return 0
-}
-    return x/y
-}
-function multiplication (x,y){
-    return x*y;
-}   
-function square (x){
-    return x*x;
-}   
-module.exports = {
-    addition,
-    subtraction,    
-    division,
-    multiplication,
-    square
-}
+module.exports = calculator;

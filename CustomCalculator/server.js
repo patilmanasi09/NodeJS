@@ -1,19 +1,42 @@
-const math = require('./math')
 
-n1 = 10
-n2 = 20
 
-const add = math.addition(n1,n2)
-console.log(n1 , "+", n2, "=", add)
+const readline = require("readline");
+const calculator = require("./math");
 
-const sub = math.subtraction(n1,n2)
-console.log(n1 , "-", n2, "=", sub) 
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
 
-const div = math.division(n1,n2)
-console.log(n1 , "/", n2, "=", div)
+rl.question("Enter first number: ", (num1) => {
 
-const mul = math.multiplication(n1,n2)
-console.log(n1 , "*", n2, "=", mul)
+  rl.question("Enter operation (+, -, *, /, square): ", (operator) => {
 
-const sq = math.square(n1,n2)
-console.log(n1 , "^", n2, "=", sq)
+    
+    if (operator === "square") {
+
+      let result = calculator(Number(num1), 0, operator);
+
+      console.log("Result =", result);
+
+      rl.close();
+
+    } else {
+
+      rl.question("Enter second number: ", (num2) => {
+
+        let result = calculator(
+          Number(num1),
+          Number(num2),
+          operator
+        );
+
+        console.log("Result =", result);
+
+        rl.close();
+      });
+    }
+
+  });
+
+});
